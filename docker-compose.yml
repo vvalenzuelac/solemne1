@@ -15,7 +15,7 @@ services:
       - pg-data:/var/lib/postgresql/data
 
   backend:
-    image: cpinom11/backend:1.0
+    image: vvalenzuelac/backend:1.0
     container_name: backend
     build:
       context: ./demo01
