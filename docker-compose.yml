@@ -29,7 +29,7 @@ services:
       - postgres
 
   frontend:
-    image: cpinom11/frontend:1.0
+    image: vvalenzuelac/frontend:1.0
     container_name: frontend
     build:
       context: ./frontend
