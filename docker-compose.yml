@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - '5463:5432'
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: remedio
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  backend:
+    image: cpinom11/backend:1.0
+    container_name: backend
+    build:
+      context: ./demo01
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/remedio
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+    ports: 
+      - '8212:8212'
+    depends_on:
+      - postgres
+
+  frontend:
+    image: cpinom11/frontend:1.0
+    container_name: frontend
+    build:
+      context: ./frontend
+    ports: 
+      - '9212:9212'
+    depends_on:
+      - backend
+
+volumes:
+  pg-data:
+      

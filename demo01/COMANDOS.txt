@@ -1,0 +1,10 @@
+psql -U postgres
+CREATE DATABASE remedio;
+
+# GIT
+git init
+git add .
+git commit -m "primer commit"
+git branch -M main
+git remote add origin https://github.com/vvalenzuelac/solemne1.git
+git push -u origin main

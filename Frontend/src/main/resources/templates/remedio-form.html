@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Remedio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
+<h2>Formulario Remedio</h2>
+
+<form th:action="@{/crud/remedio/guardar}" th:object="${remedio}" method="post">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <div class="form-group">
+        <label>Nombre Cientifico</label>
+        <input type="text" class="form-control" th:field="*{nombreCientifico}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Marca</label>
+        <input type="text" class="form-control" th:field="*{marca}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Gramos</label>
+        <input type="number" step="0.01" class="form-control" th:field="*{gramos}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Año</label>
+        <input type="number" class="form-control" th:field="*{anio}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Tipo (M, B, G)</label>
+        <input type="text" maxlength="1" class="form-control" th:field="*{tipo}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Controlado</label>
+        <select class="form-control" th:field="*{controlado}">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a th:href="@{/crud/remedio}" class="btn btn-secondary">Volver</a>
+
+</form>
+
+</body>
+</html>
